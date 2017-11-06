@@ -1,0 +1,6 @@
+[submodule "reveal.js"]
+	path = reveal.js
+	url = https://github.com/hakimel/reveal.js.git
+[submodule "docker/docker-stacks"]
+    path = docker/docker-stacks
+      url = https://github.com/jupyter/docker-stacks.git
