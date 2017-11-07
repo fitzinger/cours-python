@@ -154,11 +154,8 @@ if __name__ == '__main__':
     if args.notebook:  # notebook file name is given as argument
         notebooks = (args.notebook,)
     else:
-        notebooks = ('00-InitPython-generalites.ipynb',
-                     '01-InitPython-langage.ipynb',
-                     '02-InitPython-langage.ipynb',
-                     '03-InitPython-microprojet.ipynb',
-                     '04-InitPython-microprojet.ipynb')
+        notebooks = ('01-CoursPython-generalites.ipynb',
+                     '02-CoursPython-langage.ipynb')
 
     for notebook in notebooks:
 
