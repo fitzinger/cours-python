@@ -73,6 +73,7 @@ def remove_from_latex(tex_file_name, block_start, block_end):
     with open(tex_file_name, 'r') as in_file:
         content = in_file.readlines()
         # Get index of line containing block_start
+        istart = 0
         iend = 0
         for (index, line) in enumerate(content):
             if block_start in line:
@@ -81,7 +82,7 @@ def remove_from_latex(tex_file_name, block_start, block_end):
                 iend = index
                 break
 
-        if iend:
+        if istart and iend:
             removed = content[istart:iend]
             print(">>> Warning! The following lines will be removed",
                   "from {}:\n".format(tex_file_name))
@@ -116,6 +117,11 @@ def latex_to_pdf(tex_file_name):
 
     pdf_file_name = tex_file_name.replace('.tex', '.pdf')
     print(">>> Converting {} to {}".format(tex_file_name, pdf_file_name))
+
+    # Remove carriage return character
+    block_start = "\subsubsection*{Mode Edition}\label{mode-edition}"
+    block_end = "\subsubsection*{Note :}\label{note}"
+    remove_from_latex(tex_file_name, block_start, block_end)
 
     # Remove block containing chess and Japanese characters
     block_start = "Exemples de caractères spéciaux :"
