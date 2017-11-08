@@ -19,6 +19,8 @@ do
   cp ../scripts/manual_include_$notebook.lst $incfile
   
   # Add all .py files from exos dirs and image files from fig dirs
+  echo "$notebook.ipynb" >> $incfile
+  echo "$notebook.pdf" >> $incfile
   ls exos/*.py 2>/dev/null >> $incfile  
   ls fig/* >> $incfile
   
