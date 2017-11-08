@@ -6,7 +6,7 @@ pages:
     - master
   image: boileaum/debian-jupyter
   script:
-    - scripts/make_slides.sh --url
+    - scripts/make_slides.sh
     - scripts/make_archive.sh --zip
   artifacts:
     paths:
