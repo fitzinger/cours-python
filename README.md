@@ -1,6 +1,6 @@
 # Contenu
 
-Ce dépôt contient le matériel utilisé dans une formation d'initiation au langage Python [disponible en ligne](https://fitzinger.pages.math.unistra.fr/formation-python).
+Ce dépôt contient le matériel utilisé dans un cours d'initiation au langage Python [disponible en ligne](https://mm2act.pages.math.unistra.fr/cours-python).
 
 # Utilisation des notebooks Python
 
