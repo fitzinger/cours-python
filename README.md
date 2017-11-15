@@ -69,16 +69,16 @@ Grâce au fichier [.gitlab-ci.yml](https://gitlab.com/fitzinger/formation-python
 
 ## Suivi avec Git
 
-Pour éviter des différences indésirables dans git liées aux exécutions des cellules du notebook, il faut utiliser `nbstripout` :
+Pour éviter des différences indésirables dans git liées aux exécutions des cellules du notebook, on peut suivre [ce tutoriel](http://timstaley.co.uk/posts/making-git-and-jupyter-notebooks-play-nice/).
+Le filtre utilisé dans ce cours:
 
 ```
-pip install nbstripout
+[filter "nbstrip_full"]
+  clean = "jq --indent 1 \
+            '(.cells[] | select(has(\"outputs\")) | .outputs) = []  \
+            | (.cells[] | select(has(\"execution_count\")) | .execution_count) = null  \
+            | .metadata = {\"language_info\": {\"name\": \"python\", \"pygments_lexer\": \"ipython3\"}} \
+            '"
+  smudge = cat
+  required = true
 ```
-
-Puis dans le répertoire git :
-
-```
-nbstripout --install
-```
-
-Ce script ajoute une entrée dans `.git/config` qui permet de filtrer les modificactions du fichier notebook liées aux exécutions.
