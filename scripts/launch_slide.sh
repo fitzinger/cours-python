@@ -17,6 +17,9 @@ case $1 in
   "3")
       nbdir="03-CoursPython-langage"
       ;;
+  "4")
+      nbdir="04-CoursPython-numpy"
+      ;;
   *)
       exit
       ;;

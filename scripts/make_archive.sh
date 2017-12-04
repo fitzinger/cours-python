@@ -7,7 +7,8 @@ incfile="include.lst"
 # Remove slideshow lines and convert to pdf
 notebooks="01-CoursPython-generalites \
            02-CoursPython-langage \
-           03-CoursPython-langage"
+           03-CoursPython-langage \
+           04-CoursPython-numpy"
 
 for notebook in $notebooks
 do
