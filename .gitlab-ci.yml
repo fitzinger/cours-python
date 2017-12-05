@@ -7,7 +7,7 @@ pages:
     - pages
   only:
     - master
-  image: jupyter/minimal-notebook
+  image: boileaum/debian-jupyter
   script:
     - mkdir public
     - scripts/make_slides.sh
