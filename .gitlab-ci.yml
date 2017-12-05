@@ -12,7 +12,7 @@ pages:
     - mkdir public
       #- scripts/make_slides.sh
       #- scripts/make_archive.sh --zip
-    - pandoc -f markdown_mmd index.md -t html -o public/index.html
+    - pandoc -c scripts/github-pandoc.css -f markdown_mmd index.md -t html5 -o public/index.html
   artifacts:
     paths:
       - public
