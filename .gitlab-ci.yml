@@ -7,11 +7,12 @@ pages:
     - pages
   only:
     - master
-  image: boileaum/debian-jupyter
+  image: jupyter/minimal-notebook
   script:
     - mkdir public
-    - scripts/make_slides.sh
-    - scripts/make_archive.sh --zip
+      #- scripts/make_slides.sh
+      #- scripts/make_archive.sh --zip
+    - pandoc -f markdown_mmd index.md -t html -o public/index.html
   artifacts:
     paths:
       - public
