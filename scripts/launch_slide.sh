@@ -23,6 +23,9 @@ case $1 in
   "5")
       nbdir="05-CoursPython-microprojet"
       ;;
+  "6")
+      nbdir="06-CoursPython-langage"
+      ;;
   *)
       exit
       ;;
