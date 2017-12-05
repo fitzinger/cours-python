@@ -82,6 +82,7 @@ def do_argparse():
                         help='city for which to get the weather forecast')
     return parser.parse_args()
 
+
 if __name__ == '__main__':
     # This block is not executed if this file is imported as a module
     args = do_argparse()
@@ -94,4 +95,5 @@ if __name__ == '__main__':
         cities = [city]
 
     for city_json in cities:
-        plot_day_tempe(city_json, 'fcst_day_' + str(args.day))  # plot day temperature evolution
+        # plot day temperature evolution
+        plot_day_tempe(city_json, 'fcst_day_' + str(args.day))

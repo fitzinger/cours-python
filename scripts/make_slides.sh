@@ -13,7 +13,10 @@ else
 fi
 
 notebooks="01-CoursPython-generalites/01-CoursPython-generalites.ipynb \
-           02-CoursPython-langage/02-CoursPython-langage.ipynb"
+           02-CoursPython-langage/02-CoursPython-langage.ipynb \
+           03-CoursPython-langage/03-CoursPython-langage.ipynb \
+           04-CoursPython-numpy/04-CoursPython-numpy.ipynb \
+           05-CoursPython-microprojet/05-CoursPython-microprojet.ipynb"
 
 jupyter-nbconvert $notebooks --to slides --reveal-prefix $revealprefix --output-dir=public
 
@@ -24,5 +27,8 @@ cp *-CoursPython-*/*-CoursPython-*.ipynb public  # uploaded notebooks will be re
 mkdir public/fig
 cp 01-CoursPython-generalites/fig/* public/fig
 cp 02-CoursPython-langage/fig/* public/fig
+cp 03-CoursPython-langage/fig/* public/fig
+cp 04-CoursPython-numpy/fig/* public/fig
+cp 05-CoursPython-microprojet/fig/* public/fig
 
 

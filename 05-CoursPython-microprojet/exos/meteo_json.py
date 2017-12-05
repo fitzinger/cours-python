@@ -54,3 +54,4 @@ axicon.set_xticks([])  # Remove axes ticks
 axicon.set_yticks([])
 axicon.imshow(img)  # trigger the image show
 
+plt.show()

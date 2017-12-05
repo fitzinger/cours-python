@@ -20,6 +20,9 @@ case $1 in
   "4")
       nbdir="04-CoursPython-numpy"
       ;;
+  "5")
+      nbdir="05-CoursPython-microprojet"
+      ;;
   *)
       exit
       ;;
