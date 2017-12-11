@@ -1,0 +1,35 @@
+HEAD KNIGHT:  Nee!
+  Nee!
+  Nee!
+  Nee!
+ARTHUR:  Who are you?
+HEAD KNIGHT:  We are the Knights Who Say... Nee!
+ARTHUR:  No!  Not the Knights Who Say Nee!
+HEAD KNIGHT:  The same!
+BEDEMIR:  Who are they?
+HEAD KNIGHT:  We are the keepers of the sacred words:  Nee, Pen, and
+  Nee-wom!
+RANDOM:  Nee-wom!
+ARTHUR:  Those who hear them seldom live to tell the tale!
+HEAD KNIGHT:  The Knights Who Say Nee demand a sacrifice!
+ARTHUR:  Knights of Nee, we are but simple travellers who seek the
+  enchanter who lives beyond these woods.
+HEAD KNIGHT:  Nee!  Nee!  Nee!  Nee!
+ARTHUR and PARTY:  Oh, ow!
+HEAD KNIGHT:  We shall say 'nee' again to you if you do not appease us.
+ARTHUR:  Well, what is it you want?
+HEAD KNIGHT:  We want... a shrubbery!
+  [dramatic chord]
+ARTHUR:  A what?
+HEAD KNIGHT:  Nee!  Nee!
+ARTHUR and PARTY:  Oh, ow!
+ARTHUR:  Please, please!  No more!  We shall find a shrubbery.
+HEAD KNIGHT:  You must return here with a shrubbery or else you will
+  never pass through this wood alive!
+ARTHUR:  O Knights of Nee, you are just and fair, and we will return
+  with a shrubbery.
+HEAD KNIGHT:  One that looks nice.
+ARTHUR:  Of course.
+HEAD KNIGHT:  And not too expensive.
+ARTHUR:  Yes.
+HEAD KNIGHTS:  Now... go!
