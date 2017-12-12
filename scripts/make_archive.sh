@@ -10,7 +10,8 @@ notebooks="01-CoursPython-generalites \
            03-CoursPython-langage \
            04-CoursPython-numpy \
            05-CoursPython-microprojet \
-           06-CoursPython-langage"
+           06-CoursPython-langage \
+           07-CoursPython-pandas"
 
 for notebook in $notebooks
 do

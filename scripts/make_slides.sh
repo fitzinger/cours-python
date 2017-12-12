@@ -17,7 +17,8 @@ notebooks="01-CoursPython-generalites/01-CoursPython-generalites.ipynb \
            03-CoursPython-langage/03-CoursPython-langage.ipynb \
            04-CoursPython-numpy/04-CoursPython-numpy.ipynb \
            05-CoursPython-microprojet/05-CoursPython-microprojet.ipynb \
-           06-CoursPython-langage/06-CoursPython-langage.ipynb"
+           06-CoursPython-langage/06-CoursPython-langage.ipynb \
+           07-CoursPython-pandas/07-CoursPython-pandas.ipynb"
 
 jupyter-nbconvert $notebooks --to slides --reveal-prefix $revealprefix --output-dir=public
 
@@ -31,5 +32,7 @@ cp 02-CoursPython-langage/fig/* public/fig
 cp 03-CoursPython-langage/fig/* public/fig
 cp 04-CoursPython-numpy/fig/* public/fig
 cp 05-CoursPython-microprojet/fig/* public/fig
+cp 06-CoursPython-langage/fig/* public/fig
+cp 07-CoursPython-pandas/fig/* public/fig
 
 
