@@ -26,6 +26,9 @@ case $1 in
   "6")
       nbdir="06-CoursPython-langage"
       ;;
+  "7")
+      nbdir="07-CoursPython-pandas"
+      ;;
   *)
       exit
       ;;
