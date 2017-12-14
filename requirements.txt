@@ -1,0 +1,5 @@
+folium
+geopandas
+latex
+numpy
+pandas
