@@ -2,6 +2,11 @@
 
 Ce dépôt contient le matériel utilisé dans un cours d'initiation au langage Python [disponible en ligne](https://mm2act.pages.math.unistra.fr/cours-python).
 
+Pour l'exécuter en ligne :
+
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/boileaum/cours-python/master)
+
+
 # Utilisation des notebooks Python
 
 ## Installation de Jupyter
