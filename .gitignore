@@ -12,5 +12,16 @@ include.lst
 *.slides.html
 public
 ponte-*
-J3/04-InitPython-langage_files
 *_files/
+
+# 07
+arbres/
+quartiers/
+get-pip.py
+stras_map.html
+stras_tree.html
+stras_tree_essence.html
+test.out
+test.h5
+
+build/

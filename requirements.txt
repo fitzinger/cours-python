@@ -1,3 +1,4 @@
+bookbook
 folium
 geopandas
 latex
