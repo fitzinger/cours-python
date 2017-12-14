@@ -3,3 +3,4 @@ geopandas
 latex
 numpy
 pandas
+seaborn
