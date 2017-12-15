@@ -20,13 +20,20 @@
 % \documentclass{SIAMGHbook2016}
 \documentclass[10pt, reprint, floatfix, groupaddress, prb, twoside]{book}
 
-% \usepackage[a4paper, margin=0.5in, inner=1in]{geometry}
-% \usepackage[a4paper]{geometry}
 \usepackage[francais]{babel}    % Pour la langue française
 
 % Force floating figures to be [H]
 \usepackage{float}
 \floatplacement{figure}{H}
+
+% Add subtitle
+\usepackage{titling}
+\newcommand{\subtitle}[1]{%
+\posttitle{%
+\par\end{center}
+\begin{center}\large#1\end{center}
+\vskip0.5em}%
+}
 
 ((* endblock docclass *))
 
@@ -39,7 +46,8 @@
 ((* endblock markdowncell *))
 
 ((* block title *))
-\title{Programmer en Python}
+\title{Débuter en Python}
+\subtitle{dans un contexte scientifique}
 ((* endblock title *))
 
 ((* block maketitle *))
