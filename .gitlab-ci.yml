@@ -9,6 +9,7 @@ pages:
     - master
   image: boileaum/jupyter
   script:
+    - pip install bookbook
     - make
     - mv build public
   artifacts:
