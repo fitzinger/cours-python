@@ -18,10 +18,19 @@
 
 ((* block docclass *))
 \documentclass{SIAMGHbook2016}
+% Force floating figures
+\usepackage{float}
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+\renewenvironment{figure}[1][2] {
+    \expandafter\origfigure\expandafter[H]
+} {
+    \endorigfigure
+}
 ((* endblock docclass *))
 
 ((* block author *))
-\author{Matthieu Boileau}
+\author{Matthieu Boileau, Vincent Legoll}
 ((* endblock author *))
 
 ((* block markdowncell scoped *))
