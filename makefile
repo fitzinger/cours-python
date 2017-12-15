@@ -25,18 +25,22 @@ build:
 	@mkdir -p build
 
 build/%.html: %.ipynb
-	jupyter nbconvert --to html --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
+	#jupyter nbconvert --to html --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
+	jupyter nbconvert --to html --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
 
 build/%.slides.html: %.ipynb
-	jupyter nbconvert --to slides --execute --allow-errors \
+	#jupyter nbconvert --to slides --execute --allow-errors
+	jupyter nbconvert --to slides \
   --reveal-prefix "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0" \
   --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
 
 $(executed_notebooks): build/%.ipynb: %.ipynb
-	jupyter nbconvert --to notebook --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
+	#jupyter nbconvert --to notebook --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
+	jupyter nbconvert --to notebook --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
 
 build/index.html: index.ipynb
-	jupyter nbconvert --to html --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
+	#jupyter nbconvert --to html --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
+	jupyter nbconvert --to html --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
 
 rsync_to_build:
 	rsync -ra --delete fig build/
