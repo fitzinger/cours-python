@@ -9,7 +9,7 @@ pages:
     - master
   image: boileaum/jupyter
   script:
-    - makefile
+    - make
     - mv build public
   artifacts:
     paths:
