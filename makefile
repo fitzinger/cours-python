@@ -6,50 +6,64 @@ notebooks := 01-generalites.ipynb \
 						 06-langage.ipynb \
 						 07-pandas.ipynb \
 
+local_reveal := False
+ifeq ($(local_reveal),True)
+# Useful for running in local with internet connexion
+  revealprefix := "reveal.js"
+else
+# Needed for online publication by gitlab pages
+  revealprefix := "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0"
+endif
+
 html := $(addprefix build/, $(subst .ipynb,.html,$(notebooks)))
 slides := $(addprefix build/, $(subst .ipynb,.slides.html,$(notebooks)))
 executed_notebooks := $(addprefix build/, $(notebooks))
 
-.PHONY: all clean html slides executed_notebooks index rsync_to_build copy_to_build pdf
+.PHONY: all clean html slides executed_notebooks index copy_to_build pdf
 
 all: build html slides index pdf
 
-html: $(html)
-slides: $(slides)
-executed_notebooks: $(executed_notebooks)
-index: build/index.html
-pdf: build/cours-python.pdf
-copy_to_build: rsync_to_build build/SIAMGHbook2016.cls
+help:
+	@echo "Please use \`make <target>' where <target> is one of"
+	@echo "  html      to make standalone HTML files"
+	@echo "  slides    to make slideshows (use local_reveal=True \
+to run them without internet connection)"
+	@echo "  pdf       to compile all notebooks as a single PDF book"
+	@echo "Use \`make' to run all these targets"
+
+html: copy_to_build $(html)
+slides: copy_to_build copy_reveal $(slides)
+executed_notebooks: copy_to_build $(executed_notebooks)
+index: copy_to_build build/index.html
+pdf: copy_to_build build/cours-python.pdf
+
+define nbconvert
+	jupyter nbconvert --to $(1) --execute --allow-errors $< --output-dir=build
+endef
 
 build:
 	@mkdir -p build
 
-build/%.html: %.ipynb
-	#jupyter nbconvert --to html --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
-	jupyter nbconvert --to html --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
-
-build/%.slides.html: %.ipynb
-	#jupyter nbconvert --to slides --execute --allow-errors
-	jupyter nbconvert --to slides \
-  --reveal-prefix "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0" \
-  --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
-
-$(executed_notebooks): build/%.ipynb: %.ipynb
-	#jupyter nbconvert --to notebook --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
-	jupyter nbconvert --to notebook --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
-
-build/index.html: index.ipynb
-	#jupyter nbconvert --to html --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
-	jupyter nbconvert --to html --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
-
-rsync_to_build:
+copy_to_build: build
 	rsync -ra --delete fig build/
 	rsync -ra --delete exos build/
 
-build/SIAMGHbook2016.cls: SIAMGHbook2016.cls
-	cp SIAMGHbook2016.cls build
+copy_reveal: build
+	rsync -ra --delete reveal.js build/
 
-build/cours-python.pdf: build copy_to_build executed_notebooks book.tplx
+build/%.html: %.ipynb
+	$(call nbconvert,html,$<)
+
+build/%.slides.html: %.ipynb
+	$(call nbconvert,slides,$<) --reveal-prefix $(revealprefix)
+
+$(executed_notebooks): build/%.ipynb: %.ipynb
+	$(call nbconvert,notebook,$<)
+
+build/index.html: index.ipynb
+	$(call nbconvert,html,$<)
+
+build/cours-python.pdf: copy_to_build executed_notebooks book.tplx
 	cd build && python3 -m bookbook.latex --pdf --output-file cours-python --template ../book.tplx
 
 clean:

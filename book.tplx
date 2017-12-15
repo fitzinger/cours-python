@@ -17,20 +17,21 @@
 ((* endblock predoc *))
 
 ((* block docclass *))
-\documentclass{SIAMGHbook2016}
-% Force floating figures
+% \documentclass{SIAMGHbook2016}
+\documentclass[10pt, reprint, floatfix, groupaddress, prb, twoside]{book}
+
+% \usepackage[a4paper, margin=0.5in, inner=1in]{geometry}
+% \usepackage[a4paper]{geometry}
+\usepackage[francais]{babel}    % Pour la langue française
+
+% Force floating figures to be [H]
 \usepackage{float}
-\let\origfigure\figure
-\let\endorigfigure\endfigure
-\renewenvironment{figure}[1][2] {
-    \expandafter\origfigure\expandafter[H]
-} {
-    \endorigfigure
-}
+\floatplacement{figure}{H}
+
 ((* endblock docclass *))
 
 ((* block author *))
-\author{Matthieu Boileau, Vincent Legoll}
+\author{Matthieu Boileau \and Vincent Legoll}
 ((* endblock author *))
 
 ((* block markdowncell scoped *))
@@ -42,6 +43,7 @@
 ((* endblock title *))
 
 ((* block maketitle *))
+\date{12 décembre 2017}
 \maketitle
 ((* endblock maketitle *))
 

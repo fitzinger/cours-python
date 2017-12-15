@@ -1,89 +1,86 @@
-# Contenu
+## Contenu
 
 Ce dépôt contient le matériel utilisé dans un cours d'initiation au langage Python [disponible en ligne](https://mm2act.pages.math.unistra.fr/cours-python).
 
-Pour l'exécuter en ligne :
+
+## Execution des notebooks Jupyter
+
+> **Attention :** Le code présent dans les notebooks de cette formation est compatible uniquement avec python3.
+
+### En utilisant Mybinder
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/boileaum/cours-python/master)
 
 
-# Utilisation des notebooks Python
+### À partir d'un serveur jupyter local
 
-## Installation de Jupyter
 
-Le plus simple est d'utiliser [Anaconda](https://www.continuum.io/downloads), une suite assez complète et facile à utiliser qui contient en particulier :
+#### Installation
+
+##### avec Anaconda
+
+[Anaconda](https://www.continuum.io/downloads) est une suite assez complète et facile à utiliser qui contient entre autres :
 
 - [Jupyter](http://jupyter.org/)
 - l'IDE [Spyder](https://github.com/spyder-ide/spyder)
-- les deux versions Python 2 et Python 3
-- le gestionnaire de paquets Python ``conda``
+- les bibliothèques de Scipy : Numpy, Pandas, etc.
 
-> Attention: Le code présent dans les notebooks de cette formation est compatible uniquement avec python3.
+##### avec Pip
 
-Pour installer [Jupyter](https://pypi.python.org/pypi/jupyter) sur une distribution
-linux qui ne le propose pas dans son gestionnaire de paquets, il faut utiliser [``pip``](https://pypi.python.org/pypi/pip) :
 
-    sudo pip install jupyter
+Pour installer certains paquets qui ne sont pas dans la distribution Anaconda, il faut utiliser [``pip``](https://pypi.python.org/pypi/pip) (depuis le répertoire racine du projet) :
 
-Pour l'IDE [Spyder](https://pypi.python.org/pypi/spyder), on peut faire de même:
+```bash
+pip install -r requirements.txt
+```
 
-    sudo pip install spyder
+#### Lancement d'un serveur Jupyter
 
-## Lancement d'un serveur Jupyter
-
-- Soit via l'utilitaire ``Launcher`` d'Anaconda
-- Soit en ligne de commande, par exemple depuis le répertoire de travail des notebooks avec la commande:
+- Soit via l'interface d'Anaconda
+- Soit en ligne de commande depuis le répertoire racine du projet :
 
 ```
 jupyter-notebook
 ```
 
-Cette commande ouvre directement une page dans le navigateur par défaut sur [http://localhost:8888/tree](http://localhost:8888/tree).
-Sur cette page, il suffit de cliquer sur le nom du notebook pour l'éditer et l'exécuter.
-
 ## Conversion du notebook Jupyter
 
-En document pdf :
+### Conversion en html, diaporama et pdf
 
-	jupyter-nbconvert 00-InitPython-generalites.ipynb --to pdf
+Utiliser `make` :
+
+```bash
+make help
+Please use `make <target>' where <target> is one of
+  html      to make standalone HTML files
+  slides    to make slideshows (use local_reveal=True to run them without internet connection)
+  pdf       to compile all notebooks as a single PDF book
+Use `make' to run all these targets
+```
+
+### Lancer un diaporama
+
+Le résultat se trouve dans le répertoire `build/`.
+
 	
-Vers le mode diaporama en l'ouvrant dans un navigateur:
+Lancer le diaporama :
 
-	jupyter-nbconvert 00-InitPython-generalites.ipynb --to slides --post serve
-	
-Lancer le diaporama en utilisant un port différent du port par défaut (afin d'avoir plusieurs diaporamas ouverts) :
+```bash
+./launch_slide.sh 01-generalites.ipynb [--execute]
+```
 
-	jupyter-nbconvert 00-InitPython-generalites.ipynb --to slides --post serve --ServePostProcessor.port=8001 
-	
-Lancer le diaporama après avoir exécuté toutes les cellules du notebook :
-
-	jupyter-nbconvert 00-InitPython-generalites.ipynb --to slides --post serve --execute
-
-
-> **Utile :** Insertion d'un bouton de rendu "diaporama" *(live reveal)* dans l'interface d'édition du notebook en installant [RISE](https://github.com/damianavila/RISE).
-
-D'autres exemples de conversion avec
-
-	jupyter-nbconvert -h
-
-
-## Création de diaporamas à partir des notebooks
-
-Le script `scripts/make_slides.sh` convertit l'ensemble des notebooks en slides reveal qui peuvent être ouverts localement dans un navigateur depuis le répertoire `public/`.
-Grâce au fichier [.gitlab-ci.yml](https://gitlab.com/fitzinger/formation-python/blob/master/.gitlab-ci.yml), la  [version en ligne](https://fitzinger.gitlab.io/formation-python) est publiée automatiquement par GitLab Pages à chaque `git push` vers le dépôt GitLab.
+`--execute` permet d'afficher le résultat d'exécution des cellules.
 
 ## Suivi avec Git
 
-Pour éviter des différences indésirables dans git liées aux exécutions des cellules du notebook, on peut suivre [ce tutoriel](http://timstaley.co.uk/posts/making-git-and-jupyter-notebooks-play-nice/).
-Le filtre utilisé dans ce cours:
+Pour éviter des différences indésirables dans git liées aux exécutions des cellules du notebook, on peut utiliser `nbstripout` :
 
+```bash
+pip install --upgrade nbstripout
+# Depuis le répertoire racine du projet :
+nbstripout install
 ```
-[filter "nbstrip_full"]
-  clean = "jq --indent 1 \
-            '(.cells[] | select(has(\"outputs\")) | .outputs) = []  \
-            | (.cells[] | select(has(\"execution_count\")) | .execution_count) = null  \
-            | .metadata = {\"language_info\": {\"name\": \"python\", \"pygments_lexer\": \"ipython3\"}} \
-            '"
-  smudge = cat
-  required = true
-```
+## Publication avec Pages
+
+Grâce au fichier [.gitlab-ci.yml](https://gitlab.math.unistra.fr/mm2act/cours-python/blob/master/.gitlab-ci.yml), la  [version en ligne](https://mm2act.pages.math.unistra.fr/cours-python) est publiée automatiquement par GitLab Pages à chaque `git push` vers le dépôt GitLab.
+
