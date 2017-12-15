@@ -1,3 +1,0 @@
-Si vous lisez ce texte alors
-...
-vous savez lire un fichier avec Python !

@@ -9,9 +9,8 @@ pages:
     - master
   image: boileaum/jupyter
   script:
-    - mkdir public
-    - scripts/make_slides.sh
-    - scripts/make_archive.sh --zip
+    - makefile
+    - mv build public
   artifacts:
     paths:
       - public
