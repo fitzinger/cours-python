@@ -28,7 +28,9 @@ build/%.html: %.ipynb
 	jupyter nbconvert --to html --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
 
 build/%.slides.html: %.ipynb
-	jupyter nbconvert --to slides --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
+	jupyter nbconvert --to slides --execute --allow-errors \
+  --reveal-prefix "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0" \
+  --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
 
 $(executed_notebooks): build/%.ipynb: %.ipynb
 	jupyter nbconvert --to notebook --execute --allow-errors --ExecutePreprocessor.kernel_name=python3 $< --output-dir=build
