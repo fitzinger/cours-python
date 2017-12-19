@@ -4,7 +4,7 @@
 Process weather forecast json files to plot the time evolution of temperature
 """
 
-from correction import meteo_city as mc
+import meteo_city as mc
 import argparse
 
 URL_PREFIX = "http://www.prevision-meteo.ch/services/json/"

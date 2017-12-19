@@ -37,7 +37,7 @@ class City():
             return json_dict
 
     def get_temperature(self, day_key):
-        """store hour and temperature in numpy arrays for given day_key"""
+        """return hour and temperature as numpy arrays for given day_key"""
         day = self.json[day_key]
         day_hd = day['hourly_data']  # point to hourly data
         tempe = [[int(hour[:-3]), data['TMP2m']] for hour, data in
@@ -45,8 +45,7 @@ class City():
         tempe.sort()  # Sort temperatures according to the hour of day
         # Create numpy array and transpose list of (hour, tempe)
         t = np.array(tempe).transpose()
-        self.hour = t[0]
-        self.temperature = t[1]
+        return t[0], t[1]
 
 
 class Location(City):
@@ -77,8 +76,8 @@ def plot_day_temperature(*cities, day_number=0):
     ax.set_ylabel('Température [deg. C]')
 
     for city in cities:
-        city.get_temperature(day_key)
-        ax.plot(city.hour, city.temperature, label=city.legend)
+        hour, temperature = city.get_temperature(day_key)
+        ax.plot(hour, temperature, label=city.legend)
 
     ax.legend()  # Add legend to plot
     plt.show()  # Ensure figure is shown

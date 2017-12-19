@@ -13,6 +13,7 @@ include.lst
 public
 ponte-*
 *_files/
+__pycache__/
 
 # 07
 arbres/

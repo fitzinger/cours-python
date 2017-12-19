@@ -7,7 +7,6 @@ Process weather forecast json files to plot the time evolution of temperature
 import urllib.request
 import json
 import matplotlib.pyplot as plt
-import numpy as np
 import sys
 
 URL_PREFIX = "http://www.prevision-meteo.ch/services/json/"
@@ -19,9 +18,11 @@ class City():
 
     def __init__(self, city_name):
         """Loads city json dict"""
-        jsonfile_url = URL_PREFIX + city_name
+        # TODO: From city name, build jsonfile URL
+        # TODO: Call _get_json() to store city dictionary
+        # --- Your code here ---
+
         self.legend = city_name
-        self.json = self._get_json(jsonfile_url)
 
     def _get_json(self, jsonfile_url):
         """Download json file from URL and return a python dict"""
@@ -37,28 +38,28 @@ class City():
             return json_dict
 
     def get_temperature(self, day_key):
-        """store hour and temperature in numpy arrays for given day_key"""
-        day = self.json[day_key]
-        day_hd = day['hourly_data']  # point to hourly data
-        tempe = [[int(hour[:-3]), data['TMP2m']] for hour, data in
-                 day_hd.items()]  # Create a list of [hour, temperature]
-        tempe.sort()  # Sort temperatures according to the hour of day
-        # Create numpy array and transpose list of (hour, tempe)
-        t = np.array(tempe).transpose()
-        self.hour = t[0]
-        self.temperature = t[1]
+        """return hour and temperature as numpy arrays for given day_key"""
+        # TODO: From day_key ('fcst_day_X'), extract time and temperature data
+        # to build the two 1D numpy arrays self.hour and self.temperature
+        # --- Your code here ---
+
+        pass
 
 
 def plot_day_temperature(*cities, day_number=0):
     """Plot temperature vs hour for an arbitrary number of cities at given
     day_number (0: today, 1: tomorrow, etc.)"""
 
-    day_key = 'fcst_day_{}'.format(day_number)
-    day = cities[0].json[day_key]
-
     fig = plt.figure()  # initialize figure
-    title = "{} {}".format(day['day_long'], day['date'])
-    fig.suptitle(title, fontsize=14, fontweight='bold')
+
+    # TODO: Build a day_key string from day_number in order to get day
+    # dictionary
+    # --- Your code here ---
+
+    # TODO: Uncomment above when the above is ready
+    # day = cities[0].json[day_key]
+    # title = "{} {}".format(day['day_long'], day['date'])
+    # fig.suptitle(title, fontsize=14, fontweight='bold')
 
     ax = fig.add_subplot(111)  # initialize a plot area
     fig.subplots_adjust(top=0.85)
@@ -66,9 +67,11 @@ def plot_day_temperature(*cities, day_number=0):
     ax.set_xlabel('Temps [h]')
     ax.set_ylabel('Température [deg. C]')
 
-    for city in cities:
-        city.get_temperature(day_key)
-        ax.plot(city.hour, city.temperature, label=city.legend)
+    # TODO: loop over cities in order to:
+    # 1. get hour and temperature for given city
+    # 2. plot hour and temperature on ax for given city
+    #    (use fonction ax.plot() with "label=" argument)
+    # --- Your code here ---
 
     ax.legend()  # Add legend to plot
     plt.show()  # Ensure figure is shown
