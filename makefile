@@ -36,6 +36,7 @@ slides: copy_to_build copy_reveal $(slides)
 executed_notebooks: copy_to_build $(executed_notebooks)
 index: copy_to_build build/index.html
 pdf: copy_to_build build/cours-python.pdf
+latex: build/cours-python.tex
 
 define nbconvert
 	jupyter nbconvert --to $(1) --execute --allow-errors $< --output-dir=build
@@ -63,7 +64,10 @@ $(executed_notebooks): build/%.ipynb: %.ipynb
 build/index.html: index.ipynb
 	$(call nbconvert,html,$<)
 
-build/cours-python.pdf: copy_to_build executed_notebooks book.tplx
+build/cours-python.tex: executed_notebooks book.tplx
+	cd build && python3 -m bookbook.latex --output-file cours-python --template ../book.tplx
+
+build/cours-python.pdf: executed_notebooks book.tplx
 	cd build && python3 -m bookbook.latex --pdf --output-file cours-python --template ../book.tplx
 
 clean:

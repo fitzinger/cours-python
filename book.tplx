@@ -17,7 +17,6 @@
 ((* endblock predoc *))
 
 ((* block docclass *))
-% \documentclass{SIAMGHbook2016}
 \documentclass[10pt, reprint, floatfix, groupaddress, prb, twoside]{book}
 
 \usepackage[francais]{babel}    % Pour la langue française
@@ -26,33 +25,39 @@
 \usepackage{float}
 \floatplacement{figure}{H}
 
-% Add subtitle
-\usepackage{titling}
-\newcommand{\subtitle}[1]{%
-\posttitle{%
-\par\end{center}
-\begin{center}\large#1\end{center}
-\vskip0.5em}%
-}
+\usepackage[svgnames]{xcolor} % Required for colour specification
+
+\definecolor{pythonblue}{rgb}{0.21,0.45,0.65}
+\definecolor{pythonyellow}{rgb}{1.,0.77,0.18}
 
 ((* endblock docclass *))
-
-((* block author *))
-\author{Matthieu Boileau \and Vincent Legoll}
-((* endblock author *))
 
 ((* block markdowncell scoped *))
 ((( cell.source | citation2latex | strip_files_prefix | convert_pandoc('markdown', 'json',extra_args=[]) | resolve_references | convert_pandoc('json','latex', extra_args=["--top-level-division=chapter"]) )))
 ((* endblock markdowncell *))
 
-((* block title *))
-\title{Débuter en Python}
-\subtitle{dans un contexte scientifique}
-((* endblock title *))
-
 ((* block maketitle *))
-\date{12 décembre 2017}
-\maketitle
+\begin{titlepage}
+
+  \vspace*{\baselineskip} 
+  
+  \centering  
+  {\Large Matthieu Boileau \& Vincent Legoll}
+  \vspace*{0.167\textheight} 
+  
+  \raggedleft
+  \textbf{\LARGE Apprendre}\\[\baselineskip] 
+  \textbf{\textcolor{pythonblue}{\Huge Python}}\\[\baselineskip]  
+  \textcolor{pythonyellow}{\Large \textit{pour les sciences}}
+  
+  \vfill 
+  \centering
+  \includegraphics{fig/head_of_python_molurus_frame}
+
+  \vfill
+  {\large CNRS - Université de Strasbourg} 
+  
+\end{titlepage}
 ((* endblock maketitle *))
 
 ((* block bibliography *))

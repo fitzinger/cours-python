@@ -4,14 +4,10 @@ pas_mal.txt
 coded.txt
 decoded.txt
 *.pyc
-formation-python.zip
 today_stras.py
 include.lst
-*.tex
-*.pdf
 *.slides.html
 public
-ponte-*
 *_files/
 __pycache__/
 
