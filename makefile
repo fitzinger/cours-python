@@ -31,15 +31,15 @@ to run them without internet connection)"
 	@echo "  pdf       to compile all notebooks as a single PDF book"
 	@echo "Use \`make' to run all these targets"
 
-html: copy_to_build $(html)
-slides: copy_to_build copy_reveal $(slides)
 executed_notebooks: copy_to_build $(executed_notebooks)
+html: $(html)
+slides: copy_reveal $(slides)
 index: copy_to_build build/index.html
 pdf: copy_to_build build/cours-python.pdf
 latex: build/cours-python.tex
 
 define nbconvert
-	jupyter nbconvert --to $(1) --execute --allow-errors $< --output-dir=build
+	jupyter nbconvert --to $(1) --allow-errors $< --output-dir=build
 endef
 
 build:
@@ -52,14 +52,14 @@ copy_to_build: build
 copy_reveal: build
 	rsync -ra --delete reveal.js build/
 
-build/%.html: %.ipynb
+$(executed_notebooks): build/%.ipynb: %.ipynb
+	jupyter nbconvert --to notebook --execute --allow-errors $< --output-dir=build
+
+build/%.html: build/%.ipynb
 	$(call nbconvert,html,$<)
 
-build/%.slides.html: %.ipynb
+build/%.slides.html: build/%.ipynb
 	$(call nbconvert,slides,$<) --reveal-prefix $(revealprefix)
-
-$(executed_notebooks): build/%.ipynb: %.ipynb
-	$(call nbconvert,notebook,$<)
 
 build/index.html: index.ipynb
 	$(call nbconvert,html,$<)
