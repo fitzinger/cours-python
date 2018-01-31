@@ -46,15 +46,17 @@
   \vspace*{0.167\textheight} 
   
   \raggedleft
-  \textbf{\LARGE Apprendre}\\[\baselineskip] 
-  \textbf{\textcolor{pythonblue}{\Huge Python}}\\[\baselineskip]  
-  \textcolor{pythonyellow}{\Large \textit{pour les sciences}}
+  \textbf{\fontsize{30}{36}\selectfont Apprendre}\\[\baselineskip] 
+  \textbf{\textcolor{pythonblue}{\fontsize{50}{60}\selectfont Python}}\\[\baselineskip]  
+  \textcolor{pythonyellow}{\fontsize{30}{36}\selectfont \textit{pour les sciences}}
   
-  \vfill 
+  \vspace*{0.1\textheight} 
+
   \centering
   \includegraphics{fig/head_of_python_molurus_frame}
 
-  \vfill
+  \vfill 
+
   {\large CNRS - Université de Strasbourg} 
   
 \end{titlepage}
