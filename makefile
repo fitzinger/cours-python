@@ -39,7 +39,7 @@ pdf: copy_to_build build/cours-python.pdf
 latex: build/cours-python.tex
 
 define nbconvert
-	jupyter nbconvert --to $(1) --allow-errors $< --output-dir=build
+	jupyter nbconvert --to $(1) $< --output-dir=build
 endef
 
 build:
@@ -53,7 +53,7 @@ copy_reveal: build
 	rsync -ra --delete reveal.js build/
 
 $(executed_notebooks): build/%.ipynb: %.ipynb
-	jupyter nbconvert --to notebook --execute --allow-errors $< --output-dir=build
+	$(call nbconvert,notebook,$<) --execute --allow-errors
 
 build/%.html: build/%.ipynb
 	$(call nbconvert,html,$<)
