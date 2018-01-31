@@ -53,7 +53,7 @@ copy_reveal: build
 	rsync -ra --delete reveal.js build/
 
 $(executed_notebooks): build/%.ipynb: %.ipynb
-	$(call nbconvert,notebook,$<) --execute --allow-errors
+	$(call nbconvert,notebook,$<) --execute --allow-errors --ExecutePreprocessor.timeout=60
 
 build/%.html: build/%.ipynb
 	$(call nbconvert,html,$<)
