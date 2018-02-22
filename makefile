@@ -56,10 +56,10 @@ $(executed_notebooks): build/%.ipynb: %.ipynb
 	$(call nbconvert,notebook,$<) --execute --allow-errors --ExecutePreprocessor.timeout=60
 
 build/%.html: build/%.ipynb
-	$(call nbconvert,html,$<) --template=solution.tpl
+	$(call nbconvert,html,$<)
 
 build/%.slides.html: build/%.ipynb
-	$(call nbconvert,slides,$<) --template=solution.tpl --reveal-prefix $(revealprefix)
+	$(call nbconvert,slides,$<) --reveal-prefix $(revealprefix)
 
 build/index.html: index.ipynb
 	$(call nbconvert,html,$<)
