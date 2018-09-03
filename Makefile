@@ -18,7 +18,7 @@ endif
 html := $(addprefix build/, $(subst .ipynb,.html,$(notebooks)))
 slides := $(addprefix build/, $(subst .ipynb,.slides.html,$(notebooks)))
 executed_notebooks := $(addprefix build/, $(notebooks))
-archives := $(addprefix build/archives/, $(subst .ipynb,.zip,$(notebooks)))
+archives := $(addprefix build/, $(subst .ipynb,.zip,$(notebooks)))
 
 .PHONY: all clean html slides executed_notebooks index copy_to_build pdf
 
@@ -37,7 +37,7 @@ html: copy_to_build $(html)
 slides: copy_reveal $(slides)
 index: copy_to_build build/index.html
 pdf: copy_to_build build/cours-python.pdf
-archives: build_archives $(archives)
+archives: build $(archives)
 
 define nbconvert
 	jupyter nbconvert --to $(1) $< --output-dir=build
@@ -46,12 +46,9 @@ endef
 build:
 	@mkdir -p build
 
-build_archives:
-	@mkdir -p build/archives
-
 copy_to_build: build
-	rsync -ra --delete fig build/
-	rsync -ra --delete exos build/
+	rsync -ra --delete fig build/ --exclude ".*/" --exclude "__pycache__"
+	rsync -ra --delete exos build/ --exclude ".*/" --exclude "__pycache__"
 
 copy_reveal: build
 	rsync -ra --delete reveal.js build/
@@ -74,8 +71,8 @@ build/cours-python.tex: executed_notebooks book.tplx
 build/cours-python.pdf: executed_notebooks book.tplx
 	cd build && python3 -m bookbook.latex --pdf --output-file cours-python --template ../book.tplx
 
-$(archives): build/archives/%.zip: %.ipynb
-	zip -r $@ $< fig exos
+build/%.zip: %.ipynb
+	zip -r $@ $< fig exos --exclude "*/\.*" "*__pycache__*"
 
 clean:
 	rm -rf build
