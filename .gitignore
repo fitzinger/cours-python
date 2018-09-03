@@ -4,6 +4,7 @@ pas_mal.txt
 coded.txt
 decoded.txt
 *.pyc
+mon_module.py
 today_stras.py
 include.lst
 *.slides.html
