@@ -20,9 +20,9 @@ slides := $(addprefix build/, $(subst .ipynb,.slides.html,$(notebooks)))
 executed_notebooks := $(addprefix build/, $(notebooks))
 archives := $(addprefix build/, $(subst .ipynb,.zip,$(notebooks)))
 
-.PHONY: all clean html slides executed_notebooks index copy_to_build pdf
+.PHONY: all clean html slides executed_notebooks index copy_to_build pdf archives
 
-all: build html slides index pdf
+all: build html slides index pdf archives
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -30,6 +30,7 @@ help:
 	@echo "  slides    to make slideshows (use local_reveal=True \
 to run them without internet connection)"
 	@echo "  pdf       to compile all notebooks as a single PDF book"
+	@echo "  archives  to make ##-notebook.zip files"
 	@echo "Use \`make' to run all these targets"
 
 executed_notebooks: copy_to_build $(executed_notebooks)
