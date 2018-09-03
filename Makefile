@@ -18,6 +18,7 @@ endif
 html := $(addprefix build/, $(subst .ipynb,.html,$(notebooks)))
 slides := $(addprefix build/, $(subst .ipynb,.slides.html,$(notebooks)))
 executed_notebooks := $(addprefix build/, $(notebooks))
+archives := $(addprefix build/archives/, $(subst .ipynb,.zip,$(notebooks)))
 
 .PHONY: all clean html slides executed_notebooks index copy_to_build pdf
 
@@ -32,11 +33,11 @@ to run them without internet connection)"
 	@echo "Use \`make' to run all these targets"
 
 executed_notebooks: copy_to_build $(executed_notebooks)
-html: $(html)
+html: copy_to_build $(html)
 slides: copy_reveal $(slides)
 index: copy_to_build build/index.html
 pdf: copy_to_build build/cours-python.pdf
-latex: build/cours-python.tex
+archives: build_archives $(archives)
 
 define nbconvert
 	jupyter nbconvert --to $(1) $< --output-dir=build
@@ -44,6 +45,9 @@ endef
 
 build:
 	@mkdir -p build
+
+build_archives:
+	@mkdir -p build/archives
 
 copy_to_build: build
 	rsync -ra --delete fig build/
@@ -69,6 +73,9 @@ build/cours-python.tex: executed_notebooks book.tplx
 
 build/cours-python.pdf: executed_notebooks book.tplx
 	cd build && python3 -m bookbook.latex --pdf --output-file cours-python --template ../book.tplx
+
+$(archives): build/archives/%.zip: %.ipynb
+	zip -r $@ $< fig exos
 
 clean:
 	rm -rf build
