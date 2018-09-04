@@ -10,6 +10,7 @@ pages:
     - exercices
   image: boileaum/jupyter
   script:
+    - make clean
     - make -j 7
     - mv build public
   artifacts:
