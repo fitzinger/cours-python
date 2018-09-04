@@ -22,7 +22,7 @@ archives := $(addprefix build/, $(subst .ipynb,.zip,$(notebooks)))
 
 .PHONY: all clean html slides executed_notebooks index copy_to_build pdf archives
 
-all: build html slides index pdf archives
+all: build html slides index archives
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
