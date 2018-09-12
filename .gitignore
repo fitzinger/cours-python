@@ -23,3 +23,6 @@ test.out
 test.h5
 
 build/
+
+exos/sous_paquet/noel.py
+exos/sous_paquet2/deco.py
