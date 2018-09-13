@@ -27,7 +27,7 @@ class City():
     def _get_json(self, jsonfile_url):
         """Download json file from URL and return a python dict"""
         f = urllib.request.urlopen(jsonfile_url)  # open url
-        json_dict = json.loads(f.read().decode('utf8'))
+        json_dict = json.loads(f.read())
         if 'errors' in json_dict:
             error = json_dict['errors'][0]
             msg = "Error for {} (code: {})\n{}\n{}" \

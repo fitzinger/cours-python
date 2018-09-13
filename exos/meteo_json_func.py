@@ -20,7 +20,7 @@ def get_city_from_user():
         jsonfile_url = "http://www.prevision-meteo.ch/services/json/"\
                        + city_name
         f = urllib.request.urlopen(jsonfile_url)  # open url
-        city_json = json.loads(f.read().decode('utf8'))
+        city_json = json.loads(f.read())
         if 'errors' in city_json:
             print("{} n'existe pas dans la base. Essayez un autre nom."
                   .format(city_name))
