@@ -11,6 +11,7 @@ include.lst
 public
 *_files/
 __pycache__/
+.idea/
 
 # 07
 arbres/
