@@ -25,6 +25,11 @@ Ce dépôt contient le matériel utilisé dans un cours d'initiation au langage 
 - l'IDE [Spyder](https://github.com/spyder-ide/spyder)
 - les bibliothèques de Scipy : Numpy, Pandas, etc.
 
+```bash
+conda install -c conda-forge jupyter_contrib_nbextensions
+jupyter nbextension enable exercise2/main
+```
+
 ##### avec Pip
 
 
@@ -32,6 +37,8 @@ Pour installer certains paquets qui ne sont pas dans la distribution Anaconda, i
 
 ```bash
 pip install -r requirements.txt
+jupyter contrib nbextension install --user
+jupyter nbextension enable exercise2/main
 ```
 
 #### Lancement d'un serveur Jupyter
