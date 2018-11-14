@@ -89,5 +89,5 @@ nbstripout install
 ```
 ## Publication avec Pages
 
-Grâce au fichier [.gitlab-ci.yml](https://gitlab.math.unistra.fr/mm2act/cours-python/blob/master/.gitlab-ci.yml), la  [version en ligne](https://mm2act.pages.math.unistra.fr/cours-python) est publiée automatiquement par GitLab Pages à chaque `git push` vers le dépôt GitLab.
+Grâce au fichier [.gitlab-ci.yml](.gitlab-ci.yml), la [version en ligne](https://fitzinger.pages.math.unistra.fr/cours-python) est publiée automatiquement par GitLab Pages à chaque `git push` vers le dépôt GitLab.
 
