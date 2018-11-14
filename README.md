@@ -9,7 +9,7 @@ Ce dépôt contient le matériel utilisé dans un cours d'initiation au langage 
 
 ### En utilisant Mybinder
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/boileaum/cours-python/master)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/fitzinger/cours-python/master)
 
 
 ### À partir d'un serveur jupyter local
