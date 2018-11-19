@@ -11,6 +11,7 @@ pages:
   image: boileaum/jupyter
   script:
     - make clean
+    - make install
     - make -j 7
     - mv build public
   artifacts:
