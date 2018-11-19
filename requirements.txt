@@ -1,6 +1,7 @@
 bookbook
 folium
 geopandas
+geocoder
 latex
 numpy
 pandas

@@ -9,6 +9,7 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
+import geocoder
 
 URL_PREFIX = "http://www.prevision-meteo.ch/services/json/"
 
@@ -58,6 +59,15 @@ class Location(City):
         self.json = self._get_json(jsonfile_url)
 
 
+class Here(Location):
+    """Loads a json dictionary downloaded from current position"""
+
+    def __init__(self):
+        g = geocoder.ip('me')
+        super().__init__(*g.latlng)
+        self.legend = ('here ({})'.format(g.city))
+
+
 def plot_day_temperature(*cities, day_number=0):
     """Plot temperature vs hour for an arbitrary number of cities at given
     day_number (0: today, 1: tomorrow, etc.)"""
@@ -91,5 +101,7 @@ if __name__ == '__main__':
     paris = City('Paris')
     strasbourg = City('Strasbourg')
     trou_perdu = Location(lat=45.32, lng=10)
+    here = Here()
     # Plot temperature evolution of all these objects on the same graph
-    plot_day_temperature(toulouse, paris, strasbourg, trou_perdu, day_number=0)
+    plot_day_temperature(toulouse, paris, strasbourg, trou_perdu, here,
+                         day_number=0)
