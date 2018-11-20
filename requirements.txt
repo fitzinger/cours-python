@@ -1,10 +1,12 @@
 bookbook
 folium
-geopandas
 geocoder
+geopandas
+h5py
+jupyter_contrib_nbextensions
 latex
 numpy
 pandas
+pytest
 seaborn
-jupyter_contrib_nbextensions
 wordcloud
