@@ -98,7 +98,7 @@ if __name__ == '__main__':
 
     # Instanciate City and Location objects:
     toulouse = City('Toulouse')
-    paris = City('Paris')
+    paris = City('Marseille')
     strasbourg = City('Strasbourg')
     trou_perdu = Location(lat=45.32, lng=10)
     here = Here()
