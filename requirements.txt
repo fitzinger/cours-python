@@ -1,8 +1,10 @@
+appmode
 bookbook
 folium
 geocoder
 geopandas
 h5py
+IPython
 jupyter_contrib_nbextensions
 latex
 numpy
