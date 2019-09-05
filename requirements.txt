@@ -6,3 +6,5 @@ numpy
 pandas
 seaborn
 jupyter_contrib_nbextensions
+rise
+ipykernel
