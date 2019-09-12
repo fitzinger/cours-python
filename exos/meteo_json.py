@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import numpy as np
 
-jsonfile_url = "http://www.prevision-meteo.ch/services/json/Strasbourg"
+jsonfile_url = "https://www.prevision-meteo.ch/services/json/Strasbourg"
 
 f = urllib.request.urlopen(jsonfile_url)  # open url
 jsondict = json.loads(f.read())  # Read JSON file

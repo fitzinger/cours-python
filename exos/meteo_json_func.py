@@ -17,7 +17,7 @@ def get_city_from_user():
 
     while True:  # Infinite loop to handle city name input
         city_name = input("Entrer la ville :\n")
-        jsonfile_url = "http://www.prevision-meteo.ch/services/json/"\
+        jsonfile_url = "https://www.prevision-meteo.ch/services/json/"\
                        + city_name
         f = urllib.request.urlopen(jsonfile_url)  # open url
         city_json = json.loads(f.read())

@@ -16,7 +16,7 @@ import numpy as np
 def get_city_json(city_name):
     """Return a meteo json dictionary corresponding to city"""
 
-    jsonfile_url = "http://www.prevision-meteo.ch/services/json/"\
+    jsonfile_url = "https://www.prevision-meteo.ch/services/json/"\
                    + city_name
     f = urllib.request.urlopen(jsonfile_url)  # open url
     city_json = json.loads(f.read())

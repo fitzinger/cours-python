@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
-URL_PREFIX = "http://www.prevision-meteo.ch/services/json/"
+URL_PREFIX = "https://www.prevision-meteo.ch/services/json/"
 
 
 class City():
