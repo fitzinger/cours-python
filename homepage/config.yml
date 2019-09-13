@@ -5,3 +5,21 @@ authors:
     email: matthieu.boileau@math.unistra.fr
   - name: Vincent Legoll
     email: vincentlegoll@gmail.com
+chapters:
+  - title: Les généralités
+    filename: 01-generalite
+  - title: Le langage (1)
+    filename: 02-langage
+  - title: Le langage (2)
+    filename: 03-langage
+  - title: Numpy
+    filename: 04-numpy
+  - title: Microprojet
+    filename: 05-microprojet
+  - title: Le langage (3)
+    filename: 06-langage
+  - title: Pandas
+    filename: 07-pandas
+gitlab_url: https://gitlab.math.unistra.fr/mm2act/cours-python
+pdf_name: cours-python.pdf
+mybinder_url: https://mybinder.org/v2/gh/boileaum/cours-python/master

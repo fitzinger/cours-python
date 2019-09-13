@@ -50,6 +50,7 @@ build:
 copy_to_build: build
 	rsync -ra --delete fig build/ --exclude ".*/" --exclude "__pycache__"
 	rsync -ra --delete exos build/ --exclude ".*/" --exclude "__pycache__"
+	rsync -av --delete homepage/css/ build/css/
 
 copy_reveal: build
 	rsync -ra --delete reveal.js build/
@@ -63,8 +64,8 @@ build/%.html: build/%.ipynb
 build/%.slides.html: build/%.ipynb
 	$(call nbconvert,slides,$<) --reveal-prefix $(revealprefix)
 
-build/index.html: index.ipynb
-	$(call nbconvert,html,$<)
+build/index.html: homepage/template.html homepage/config.yml
+	cd build && python3 ../homepage/generate_homepage.py 
 
 build/cours-python.tex: executed_notebooks book.tplx
 	cd build && python3 -m bookbook.latex --output-file cours-python --template ../book.tplx
