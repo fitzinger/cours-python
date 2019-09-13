@@ -12,6 +12,7 @@ public
 *_files/
 __pycache__/
 .idea/
+venv/
 
 # 07
 arbres/

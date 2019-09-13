@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-    <title>Programmer en Python</title>
+    <title>{{ title }}</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
         <p><img src="fig/python-logo.png" alt=""></p>
-        <p><h3>Master 2 DUAS Unistra, 2019-2020</h3></p><hr>
-        <p><h1>Programmer en Python</h1></p>
+        <p><h3>{{ subtitle }}</h3></p><hr>
+        <p><h1>{{ title }}</h1></p>
         <hr>
         <table>
             <tr>
@@ -75,17 +75,12 @@
         </table>
         <hr>                
         <table id="auteurs">
-            
+            {% for author in authors %}
             <tr>
-                <td>Matthieu Boileau</td>
-                <td><a href="mailto: matthieu.boileau@math.unistra.fr"><img style="display:inline" width="20" src="fig/email.svg"></a></td>
+                <td>{{ author.name }}</td>
+                <td><a href="mailto: {{ author.email }}"><img style="display:inline" width="20" src="fig/email.svg"></a></td>
             </tr>
-            
-            <tr>
-                <td>Vincent Legoll</td>
-                <td><a href="mailto: vincentlegoll@gmail.com"><img style="display:inline" width="20" src="fig/email.svg"></a></td>
-            </tr>
-            
+            {% endfor %}
         </table>
         <p><div id="licence">Contenu mis à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="fig/by-sa.svg" width="70px"></div></a></p>
     </div>
