@@ -18,8 +18,10 @@ chapters:
     filename: 05-microprojet
   - title: Le langage (3)
     filename: 06-langage
+    hide_material: True
   - title: Pandas
     filename: 07-pandas
+    hide_material: True
 gitlab_url: https://gitlab.math.unistra.fr/mm2act/cours-python
 pdf_name: cours-python.pdf
 mybinder_url: https://mybinder.org/v2/gh/boileaum/cours-python/master

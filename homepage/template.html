@@ -21,8 +21,10 @@
             <tr>
                 <td>{{ chapter.title }}</td>
                 <td><a href="{{ chapter.filename}}.html"><img width="25" src="fig/favicon-notebook.ico"></a></td>
+                {% if not chapter.hide_material %}
                 <td><a href="{{ chapter.filename}}.slides.html"><img width="35" src="fig/slideshow.png"></a></td>
                 <td><a href="{{ chapter.filename}}.zip"><img width="35" src="fig/download.svg"></a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </table>

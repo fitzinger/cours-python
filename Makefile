@@ -64,7 +64,7 @@ build/%.html: build/%.ipynb
 build/%.slides.html: build/%.ipynb
 	$(call nbconvert,slides,$<) --reveal-prefix $(revealprefix)
 
-build/index.html: homepage/template.html homepage/config.yml
+build/index.html: homepage/template.html homepage/variables.yml
 	cd build && python3 ../homepage/generate_homepage.py 
 
 build/cours-python.tex: executed_notebooks book.tplx
