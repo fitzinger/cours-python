@@ -8,9 +8,8 @@ pages:
     - docker
     - pages
   only:
-    refs:
-      - $CI_PROJECT_NAMESPACE
-      - /^pub-.*$/
+    variables:
+      - $CI_COMMIT_REF_NAME == $CI_PROJECT_NAMESPACE
   image: boileaum/jupyter
   script:
     - "echo CI_PROJECT_NAMESPACE: $CI_PROJECT_NAMESPACE"
