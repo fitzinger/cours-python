@@ -1,5 +1,4 @@
-title: Programmer en Python
-subtitle: Master 2 DUAS Unistra, 2019-2020
+title: Apprendre Python pour les sciences
 authors:
   - name: Matthieu Boileau
     email: matthieu.boileau@math.unistra.fr
@@ -18,9 +17,7 @@ chapters:
     filename: 05-microprojet
   - title: Le langage (3)
     filename: 06-langage
-    preview_only: True
   - title: Pandas
     filename: 07-pandas
-    preview_only: True
-gitlab_url: https://gitlab.math.unistra.fr/mm2act/cours-python
+gitlab_url: https://gitlab.math.unistra.fr/fitzinger/cours-python
 pdf_name: cours-python.pdf
