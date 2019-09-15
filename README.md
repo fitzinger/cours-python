@@ -30,6 +30,8 @@ conda install -c conda-forge jupyter_contrib_nbextensions
 jupyter nbextension enable exercise2/main
 ```
 
+> Pour une installation détaillée d'Anaconda et des extensions sur Windows, Mac ou Linux, suivre cette [notice](install_anaconda.md).
+
 ##### avec Pip
 
 

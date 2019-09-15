@@ -20,7 +20,7 @@ slides := $(addprefix build/, $(subst .ipynb,.slides.html,$(notebooks)))
 executed_notebooks := $(addprefix build/, $(notebooks))
 archives := $(addprefix build/, $(subst .ipynb,.zip,$(notebooks)))
 
-.PHONY: all clean html slides executed_notebooks index copy_to_build pdf archives
+.PHONY: all clean html slides executed_notebooks index copy_to_build pdf archives install
 
 all: build html slides index archives pdf
 
@@ -32,6 +32,9 @@ to run them without internet connection)"
 	@echo "  pdf       to compile all notebooks as a single PDF book"
 	@echo "  archives  to make ##-notebook.zip files"
 	@echo "Use \`make' to run all these targets"
+
+install:
+	pip install -r requirements.txt
 
 executed_notebooks: copy_to_build $(executed_notebooks)
 html: copy_to_build $(html)
