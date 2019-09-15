@@ -8,9 +8,9 @@ pages:
     - docker
     - pages
   only:
-      refs:
-        - $CI_PROJECT_NAMESPACE
-        - /^pub-.*$/
+    refs:
+      - $CI_PROJECT_NAMESPACE
+      - /^pub-.*$/
   image: boileaum/jupyter
   script:
     - "echo CI_PROJECT_NAMESPACE: $CI_PROJECT_NAMESPACE"
