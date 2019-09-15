@@ -8,7 +8,7 @@ pages:
     - docker
     - pages
   only:
-    - $CI_PROJECT_NAMESPACE
+    - mm2act
     - /^pub-.*$/
   image: boileaum/jupyter
   script:
