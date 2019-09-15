@@ -11,7 +11,7 @@ import numpy as np
 import sys
 import geocoder
 
-URL_PREFIX = "http://www.prevision-meteo.ch/services/json/"
+URL_PREFIX = "https://www.prevision-meteo.ch/services/json/"
 
 
 class City():
