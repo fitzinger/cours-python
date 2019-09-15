@@ -16,6 +16,7 @@ pages:
     - make clean
     - make install
     - make -j 7
+    - make archive
     - mv build public
   artifacts:
     paths:

@@ -1,0 +1,19 @@
+name: espe
+channels:
+    - conda-forge
+dependencies:
+    - appmode
+    - folium
+    - geocoder
+    - geopandas
+    - h5py
+    - IPython
+    - ipywidgets
+    - jupyter_contrib_nbextensions
+    - jupyter_nbextensions_configurator
+    - numpy
+    - pandas
+    - pytest
+    - rise
+    - seaborn
+    - wordcloud

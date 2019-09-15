@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8" />
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="fig/favicon.ico">
-</head>
-<body>
-    <div class="container">
+{% extends "base.html" %}
+
+        {% block content %}
         <p><img src="fig/python-logo.png" alt=""></p>
         {% if subtitle %}<p><h3>{{ subtitle }}</h3></p><hr>{% endif %}
         <p><h1>{{ title }}</h1></p>
@@ -29,9 +23,9 @@
             {% else %}
             <tr>
                     <td>{{ chapter.title }}</td>
-                    <td><a href="{{ chapter.filename}}.html"><img width="25" src="fig/favicon-notebook.ico"></td>
-                    <td><a href="{{ chapter.filename}}.slides.html"><img width="35" src="fig/slideshow.png"></td>
-                    <td><a href="{{ chapter.filename}}.zip"><img width="35" src="fig/download.svg"></td>
+                    <td><a href="{{ chapter.filename}}.html"><img width="25" src="fig/favicon-notebook.ico"></a></td>
+                    <td><a href="{{ chapter.filename}}.slides.html"><img width="35" src="fig/slideshow.png"></a></td>
+                    <td><a href="{{ chapter.filename}}.zip"><img width="35" src="fig/download.svg"></a></td>
             </tr>            
             {% endif %}
             {% endfor %}
@@ -44,21 +38,27 @@
                 {% if gitlab_url %}<td>Sources</td>{% endif %}
             </tr>
             <tr>
-                {% if mybinder_url %}<td><a href="{{ mybinder_url }}"><img src="https://mybinder.org/badge.svg"></td>{% endif %}
-                {% if pdf_name %}<td><a href="{{ pdf_name }}"><img width="30" src="fig/Adobe_PDF_icon.svg"></td>{% endif %}
-                {% if gitlab_url %}<td><a href="{{ gitlab_url }}"><img width="30" src="fig/GitLab_Logo.svg"></td>{% endif %}
+                {% if mybinder_url %}<td><a href="{{ mybinder_url }}"><img src="https://mybinder.org/badge.svg"></a></td>{% endif %}
+                {% if pdf_name %}<td><a href="{{ pdf_name }}"><img width="30" src="fig/Adobe_PDF_icon.svg"></a></td>{% endif %}
+                {% if gitlab_url %}<td><a href="{{ gitlab_url }}"><img width="30" src="fig/GitLab_Logo.svg"></a></td>{% endif %}
             </tr>
         </table>
-        <hr>                
+        <p>Pour utiliser ce matériel de cours, installer Anaconda et ses extensions en suivant cette
+             <a href="install_anaconda.html">procédure</a>.</p>          
+        <hr>
         <table id="auteurs">
             {% for author in authors %}
             <tr>
                 <td>{{ author.name }}</td>
-                <td><a href="mailto: {{ author.email }}"><img style="display:inline" width="20" src="fig/email.svg"></td>
+                <td><a href="mailto: {{ author.email }}"><img style="display:inline" width="20" src="fig/email.svg"></a></td>
             </tr>
             {% endfor %}
         </table>
-        <p><div id="licence">Contenu mis à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="fig/by-sa.svg" width="70px"></div></p>
-    </div>
-</body>
-</html>
+        <div id="licence">
+            <p>Contenu mis à disposition sous licence
+                <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+                    <img src="fig/by-sa.svg" width="70px">
+                </a>
+            </p>
+        </div>
+        {% endblock content %}

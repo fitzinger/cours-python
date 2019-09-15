@@ -1,3 +1,4 @@
+*.swp
 .DS_Store
 .ipynb_checkpoints
 pas_mal.txt
@@ -29,3 +30,6 @@ build/
 
 exos/sous_paquet/noel.py
 exos/sous_paquet2/deco.py
+
+homepage/install_anaconda.html
+homepage/index.html
