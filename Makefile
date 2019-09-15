@@ -1,10 +1,9 @@
 notebooks := 01-generalites.ipynb \
 						 02-langage.ipynb \
 						 03-langage.ipynb \
-						 04-numpy.ipynb \
-						 05-microprojet.ipynb \
-						 06-langage.ipynb \
-						 07-pandas.ipynb \
+						 04-microprojet.ipynb \
+						 05-pandas.ipynb \
+						 stras_arbres.ipynb
 
 local_reveal := False
 ifeq ($(local_reveal),True)
@@ -22,7 +21,7 @@ archives := $(addprefix build/, $(subst .ipynb,.zip,$(notebooks)))
 
 .PHONY: all clean html slides executed_notebooks index copy_to_build pdf archives install
 
-all: build html slides index archives pdf
+all: build html slides index archives pdf install_anaconda
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -31,10 +30,12 @@ help:
 to run them without internet connection)"
 	@echo "  pdf       to compile all notebooks as a single PDF book"
 	@echo "  archives  to make ##-notebook.zip files"
+	@echo "  archive   to make cours-python.zip file"
+	@echo "  index     to make index.html"
 	@echo "Use \`make' to run all these targets"
 
 install:
-	pip install --user -r requirements.txt
+	pip install -U --user -r requirements.txt
 
 executed_notebooks: copy_to_build $(executed_notebooks)
 html: copy_to_build $(html)
@@ -42,6 +43,8 @@ slides: copy_reveal $(slides)
 index: copy_to_build build/index.html
 pdf: copy_to_build build/cours-python.pdf
 archives: build $(archives)
+install_anaconda: build build/install_anaconda.html
+archive: build/cours-python.zip
 
 define nbconvert
 	jupyter nbconvert --to $(1) $< --output-dir=build
@@ -73,11 +76,14 @@ build/index.html: $(wildcard homepage/*) $(wildcard homepage/css/*)
 build/cours-python.tex: executed_notebooks book.tplx
 	cd build && python3 -m bookbook.latex --output-file cours-python --template ../book.tplx
 
-build/cours-python.pdf: executed_notebooks book.tplx
+build/cours-python.pdf: $(executed_notebooks) book.tplx
 	cd build && python3 -m bookbook.latex --pdf --output-file cours-python --template ../book.tplx
 
 build/%.zip: %.ipynb
 	zip -r $@ $< fig exos --exclude "*/\.*" "*__pycache__*"
+
+build/cours-python.zip: all
+	  cd build && zip -r cours-python.zip * --exclude "*/\.*" "*__pycache__*" "*.e" "*.zip"
 
 clean:
 	rm -rf build
