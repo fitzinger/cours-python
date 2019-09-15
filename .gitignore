@@ -12,6 +12,7 @@ public
 *_files/
 __pycache__/
 .idea/
+.vscode/
 venv/
 
 # 07
