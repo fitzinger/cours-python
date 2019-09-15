@@ -6,7 +6,7 @@ authors:
     email: vincentlegoll@gmail.com
 chapters:
   - title: Les généralités
-    filename: 01-generalite
+    filename: 01-generalites
   - title: Le langage (1)
     filename: 02-langage
   - title: Le langage (2)
