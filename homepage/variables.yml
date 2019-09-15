@@ -19,5 +19,6 @@ chapters:
     filename: 06-langage
   - title: Pandas
     filename: 07-pandas
-gitlab_url: https://gitlab.math.unistra.fr/fitzinger/cours-python
+mybinder_url: https://mybinder.org/v2/gh/fitzinger/cours-python/master
 pdf_name: cours-python.pdf
+gitlab_url: https://gitlab.math.unistra.fr/fitzinger/cours-python
