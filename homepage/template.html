@@ -39,14 +39,14 @@
         <hr>
         <table id="bottom">
             <tr>
-                <td>Exécuter</td>
-                <td>Version pdf</td>
-                <td>Sources</td>
+                {% if mybinder_url %}<td>Exécuter</td>{% endif %}
+                {% if pdf_name %}<td>Version pdf</td>{% endif %}
+                {% if gitlab_url %}<td>Sources</td>{% endif %}
             </tr>
             <tr>
-                <td><a href="{{ mybinder_url }}"><img src="https://mybinder.org/badge.svg"></td>
-                <td><a href="{{ pdf_name }}"><img width="30" src="fig/Adobe_PDF_icon.svg"></td>
-                <td><a href="{{ gitlab_url }}"><img width="30" src="fig/GitLab_Logo.svg"></td>
+                {% if mybinder_url %}<td><a href="{{ mybinder_url }}"><img src="https://mybinder.org/badge.svg"></td>{% endif %}
+                {% if pdf_name %}<td><a href="{{ pdf_name }}"><img width="30" src="fig/Adobe_PDF_icon.svg"></td>{% endif %}
+                {% if gitlab_url %}<td><a href="{{ gitlab_url }}"><img width="30" src="fig/GitLab_Logo.svg"></td>{% endif %}
             </tr>
         </table>
         <hr>                

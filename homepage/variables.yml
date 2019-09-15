@@ -24,4 +24,3 @@ chapters:
     preview_only: True
 gitlab_url: https://gitlab.math.unistra.fr/mm2act/cours-python
 pdf_name: cours-python.pdf
-mybinder_url: https://mybinder.org/v2/gh/boileaum/cours-python/master
