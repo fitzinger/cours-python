@@ -12,6 +12,7 @@ pages:
     - /^pub-.*$/
   image: boileaum/jupyter
   script:
+    - echo "CI_PROJECT_NAMESPACE: $CI_PROJECT_NAMESPACE"
     - make clean
     - make install
     - make -j 7
