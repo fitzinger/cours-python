@@ -27,7 +27,7 @@ for hour, data in day_hd.items():
     # get temperature at 2m above ground 'TMP2m'
     tempe.append([int(hour[:-3]), data['TMP2m']])
 # Alternative form using list comprehension:
-# tempe = [[int(hour[:-3]), data['TMP2m']] for hour, data in day_hd.iteritems()]
+# tempe = [[int(hour[:-3]), data['TMP2m']] for hour, data in day_hd.items()]
 
 tempe.sort()  # Sort temperatures according to the hour of day
 t = np.array(tempe).transpose()  # Transpose list of (hour, tempe)
