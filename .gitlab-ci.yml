@@ -8,6 +8,7 @@ pages:
   only:
     - master
     - exercices
+    - /^pub-.*$/
   image: boileaum/jupyter
   script:
     - make clean
