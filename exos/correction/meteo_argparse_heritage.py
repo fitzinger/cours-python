@@ -7,7 +7,7 @@ Process weather forecast json files to plot the time evolution of temperature
 import meteo_heritage as mc
 import argparse
 
-URL_PREFIX = "http://www.prevision-meteo.ch/services/json/"
+URL_PREFIX = "https://www.prevision-meteo.ch/services/json/"
 
 
 def get_args():
