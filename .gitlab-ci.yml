@@ -8,8 +8,7 @@ pages:
     - docker
     - pages
   only:
-    - master
-    - exercices
+    - $CI_PROJECT_NAMESPACE
     - /^pub-.*$/
   image: boileaum/jupyter
   script:
