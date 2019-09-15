@@ -18,14 +18,21 @@
                 <th>Archive</th>
             </tr>
             {% for chapter in chapters %}
-            <tr>
+            {% if chapter.preview_only %}
+            <tr style="opacity:0.5">
                 <td>{{ chapter.title }}</td>
-                <td><a href="{{ chapter.filename}}.html"><img width="25" src="fig/favicon-notebook.ico"></a></td>
-                {% if not chapter.hide_material %}
-                <td><a href="{{ chapter.filename}}.slides.html"><img width="35" src="fig/slideshow.png"></a></td>
-                <td><a href="{{ chapter.filename}}.zip"><img width="35" src="fig/download.svg"></a></td>
-                {% endif %}
+                <td><img width="25" src="fig/favicon-notebook.ico"></td>
+                <td><img width="35" src="fig/slideshow.png"></td>
+                <td><img width="35" src="fig/download.svg"></td>
             </tr>
+            {% else %}
+            <tr>
+                    <td>{{ chapter.title }}</td>
+                    <td><a href="{{ chapter.filename}}.html"><img width="25" src="fig/favicon-notebook.ico"></td>
+                    <td><a href="{{ chapter.filename}}.slides.html"><img width="35" src="fig/slideshow.png"></td>
+                    <td><a href="{{ chapter.filename}}.zip"><img width="35" src="fig/download.svg"></td>
+            </tr>            
+            {% endif %}
             {% endfor %}
         </table>
         <hr>
@@ -36,9 +43,9 @@
                 <td>Sources</td>
             </tr>
             <tr>
-                <td><a href="{{ mybinder_url }}"><img src="https://mybinder.org/badge.svg"></a></td>
-                <td><a href="{{ pdf_name }}"><img width="30" src="fig/Adobe_PDF_icon.svg"></a></td>
-                <td><a href="{{ gitlab_url }}"><img width="30" src="fig/GitLab_Logo.svg"></a></td>
+                <td><a href="{{ mybinder_url }}"><img src="https://mybinder.org/badge.svg"></td>
+                <td><a href="{{ pdf_name }}"><img width="30" src="fig/Adobe_PDF_icon.svg"></td>
+                <td><a href="{{ gitlab_url }}"><img width="30" src="fig/GitLab_Logo.svg"></td>
             </tr>
         </table>
         <hr>                
@@ -46,11 +53,11 @@
             {% for author in authors %}
             <tr>
                 <td>{{ author.name }}</td>
-                <td><a href="mailto: {{ author.email }}"><img style="display:inline" width="20" src="fig/email.svg"></a></td>
+                <td><a href="mailto: {{ author.email }}"><img style="display:inline" width="20" src="fig/email.svg"></td>
             </tr>
             {% endfor %}
         </table>
-        <p><div id="licence">Contenu mis à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="fig/by-sa.svg" width="70px"></div></a></p>
+        <p><div id="licence">Contenu mis à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="fig/by-sa.svg" width="70px"></div></p>
     </div>
 </body>
 </html>
