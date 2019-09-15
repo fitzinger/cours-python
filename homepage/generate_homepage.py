@@ -27,9 +27,10 @@ def get_variables(variables_file=VARIABLES_FILE):
         variables[variable] = os.environ.get(environment_variable,
                                              variables[variable])
     # Make ichapter > working_chapter unavailable for download
-    working_chapter = int(os.environ.get('{}_WORKING_CHAPTER'.format(
-                                         ENV_VARIABLE_PREFIX)))
+    working_chapter = os.environ.get('{}_WORKING_CHAPTER'.format(
+                                     ENV_VARIABLE_PREFIX))
     if working_chapter:
+        working_chapter = int(working_chapter)
         for ichapter, chapter in enumerate(variables['chapters']):
             print(ichapter, chapter)
             if ichapter >= working_chapter:
