@@ -2,6 +2,8 @@ variables:
     GIT_SUBMODULE_STRATEGY: recursive
 
 pages:
+  variables:
+    COURSE_GITLAB_URL: $CI_PROJECT_URL
   tags:
     - docker
     - pages
