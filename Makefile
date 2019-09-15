@@ -34,7 +34,7 @@ to run them without internet connection)"
 	@echo "Use \`make' to run all these targets"
 
 install:
-	pip install -r requirements.txt
+	pip install --user -r requirements.txt
 
 executed_notebooks: copy_to_build $(executed_notebooks)
 html: copy_to_build $(html)
