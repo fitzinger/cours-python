@@ -40,10 +40,9 @@ install:
 executed_notebooks: copy_to_build $(executed_notebooks)
 html: copy_to_build $(html)
 slides: copy_reveal $(slides)
-index: copy_to_build build/index.html
+index: copy_to_build build/index.html build/install_anaconda.html
 pdf: copy_to_build build/cours-python.pdf
 archives: build $(archives)
-install_anaconda: build build/install_anaconda.html
 archive: build/cours-python.zip
 
 define nbconvert
@@ -56,7 +55,7 @@ build:
 copy_to_build: build
 	rsync -ra --delete fig build/ --exclude ".*/" --exclude "__pycache__"
 	rsync -ra --delete exos build/ --exclude ".*/" --exclude "__pycache__"
-	rsync -av --delete homepage/css/ build/css/
+	rsync -av --delete homepage/css build/
 
 copy_reveal: build
 	rsync -ra --delete reveal.js build/
@@ -70,7 +69,7 @@ build/%.html: build/%.ipynb
 build/%.slides.html: build/%.ipynb
 	$(call nbconvert,slides,$<) --reveal-prefix $(revealprefix)
 
-build/index.html: $(wildcard homepage/*) $(wildcard homepage/css/*)
+build/index.html build/install_anaconda.html: $(wildcard homepage/*) $(wildcard homepage/css/*)
 	cd build && python3 ../homepage/generate_homepage.py 
 
 build/cours-python.tex: executed_notebooks book.tplx

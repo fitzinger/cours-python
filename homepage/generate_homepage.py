@@ -10,7 +10,7 @@ from markdown import markdown
 
 
 SCRIPT_PATH = os.path.relpath(os.path.join(os.path.dirname(__file__)))
-VARIABLES_FILE = os.path.join(SCRIPT_PATH, "variables.yml")
+VARIABLES_FILE = os.path.join(SCRIPT_PATH, "homepage.yml")
 HTML_TEMPLATE = "homepage.html"
 print(HTML_TEMPLATE)
 ENV_VARIABLE_PREFIX = 'COURSE'
