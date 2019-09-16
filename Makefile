@@ -19,9 +19,9 @@ slides := $(addprefix build/, $(subst .ipynb,.slides.html,$(notebooks)))
 executed_notebooks := $(addprefix build/, $(notebooks))
 archives := $(addprefix build/, $(subst .ipynb,.zip,$(notebooks)))
 
-.PHONY: all clean html slides executed_notebooks index copy_to_build pdf archives install
+.PHONY: all clean html slides executed_notebooks index copy_to_build pdf archives archive install
 
-all: build html slides index archives pdf install_anaconda
+all: build html slides index archives pdf archive
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -63,14 +63,14 @@ copy_reveal: build
 $(executed_notebooks): build/%.ipynb: %.ipynb
 	$(call nbconvert,notebook,$<) --execute --allow-errors --ExecutePreprocessor.timeout=60
 
+build/index.html build/install_anaconda.html: $(wildcard homepage/*) $(wildcard homepage/css/*)
+	cd build && python3 ../homepage/generate_homepage.py 
+
 build/%.html: build/%.ipynb
 	$(call nbconvert,html,$<)
 
 build/%.slides.html: build/%.ipynb
 	$(call nbconvert,slides,$<) --reveal-prefix $(revealprefix)
-
-build/index.html build/install_anaconda.html: $(wildcard homepage/*) $(wildcard homepage/css/*)
-	cd build && python3 ../homepage/generate_homepage.py 
 
 build/cours-python.tex: executed_notebooks book.tplx
 	cd build && python3 -m bookbook.latex --output-file cours-python --template ../book.tplx
