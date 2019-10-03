@@ -49,10 +49,12 @@ def render(html_filename, html_template, variables):
     with open(html_filename, 'w') as f:
         f.write(html_out)
 
+
 def markdown2html(markdown_file):
     with open(os.path.join(SCRIPT_PATH, markdown_file), 'r') as f:
         md = f.read()
     return markdown(md, extensions=['fenced_code', 'codehilite'])
+
 
 def main():
     # Render homepage

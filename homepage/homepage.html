@@ -36,11 +36,13 @@
                 {% if mybinder_url %}<td>Exécuter</td>{% endif %}
                 {% if pdf_name %}<td>Version pdf</td>{% endif %}
                 {% if gitlab_url %}<td>Sources</td>{% endif %}
+                {% if archive %}<td>Archive complète</td>{% endif %}
             </tr>
             <tr>
                 {% if mybinder_url %}<td><a href="{{ mybinder_url }}"><img src="https://mybinder.org/badge.svg"></a></td>{% endif %}
                 {% if pdf_name %}<td><a href="{{ pdf_name }}"><img width="30" src="fig/Adobe_PDF_icon.svg"></a></td>{% endif %}
                 {% if gitlab_url %}<td><a href="{{ gitlab_url }}"><img width="30" src="fig/GitLab_Logo.svg"></a></td>{% endif %}
+                {% if archive %}<td><a href="{{ archive }}"><img width="30" src="fig/download.svg"></a></td>{% endif %}
             </tr>
         </table>
         <p>Pour utiliser ce matériel de cours, installer Anaconda et ses extensions en suivant cette
